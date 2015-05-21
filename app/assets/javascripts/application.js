@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require assets/lib/bootstrap/dist/js/bootstrap.min
-//= require assets/lib/keen-js/dist/keen.min
-//= require assets/js/meta
+//= require lib/bootstrap/dist/js/bootstrap.min
+//= require lib/keen-js/dist/keen.min
+//= require js/meta
 //= require_tree .
 
