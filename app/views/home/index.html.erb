@@ -1,36 +1,36 @@
 <div class="container-fluid">
-    <div class="row">
 
-      <div class="col-sm-8">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Bark noise by minutes
-          </div>
-          <div class="chart-stage">
-            <div id="chart-01"></div>
-          </div>
-          <div class="chart-notes">
-            Results from recording noise today.
+  <div class="row">
+
+    <div class="col-sm-12">
+
+      <div class="chart-wrapper">
+
+        <div class="chart-title">
+          Bark noise - <%=@bark_display_interval%>
+        </div>
+        <div class="chart-stage">
+          <div id="chart-01"></div>
+        </div>
+        <div class="chart-notes">
+          Results from recording noise today.
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="btn-group" role="group" aria-label="...">
+              <% @interval_options.each do |i| %>
+
+              <%  active_class = @bark_display_interval == i ? "active" : "" %>
+
+              <%= link_to i, bark_interval_path(i), {:class=> "#{active_class} btn btn-default", :role=>"button"} %>
+
+              <%end%>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="col-sm-4">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Average bark times
-          </div>
-          <div class="chart-stage">
-            <div id="chart-02"></div>
-          </div>
-          <div class="chart-notes">
-            
-          </div>
-        </div>
-      </div>
-
     </div>
-
 
     <div class="row">
 
@@ -43,7 +43,7 @@
             <div id="chart-03"></div>
           </div>
           <div class="chart-notes">
-           
+
           </div>
         </div>
       </div>

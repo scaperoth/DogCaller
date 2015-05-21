@@ -50,9 +50,9 @@ Keen.ready(function(){
   // ----------------------------------------
   var pageviews_timeline = new Keen.Query("sum", {
     eventCollection: "BrodyBark",
-    interval: "minutely",
+    interval: "<%=@bark_display_interval%>",
     target_property: "bark",
-    timeframe: "today"
+    timeframe: "<%=@timeframe%>"
   });
   client.draw(pageviews_timeline, document.getElementById("chart-01"), {
     chartType: "areachart",
@@ -77,13 +77,11 @@ Keen.ready(function(){
   // ----------------------------------------
   // Sample two
   // ----------------------------------------
-  var pageviews_static = new Keen.Query("count", {
-    eventCollection: "pageviews",
-    groupBy: "user.device_info.browser.family",
-    timeframe: {
-      start: "2014-05-01T00:00:00.000Z",
-      end: "2014-05-05T00:00:00.000Z"
-    }
+  var pageviews_static = new Keen.Query("average", {
+    eventCollection: "BrodyBark",
+    interval: "<%=@bark_display_interval%>",
+    target_property: "bark",
+    timeframe: "<%=@timeframe%>"
   });
   client.draw(pageviews_static, document.getElementById("chart-02"), {
     chartType: "piechart",
