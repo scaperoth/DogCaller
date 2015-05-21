@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-DogCaller::Application.config.secret_token = '6ce639e0065a72975f00008c6e23371c117e9f6c83058a64b00e7374ce6f5d98f64f4c56c5cd9172e17a1d9e79192f94750a9700d71cf955ea6aeb366a6cf38c'
+DogCaller::Application.config.secret_token = 'a5eef6dda97dea64e4876406857a25e0119e64ffa0459d53cf2581c7b01a1e6344aa094ab4877ccd3aed2e626b51a8e12f328f7860ee33be4e96bfbe510613f8'
