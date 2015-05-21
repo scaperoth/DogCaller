@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-  	Keen.publish(:sign_ups, { :username => "lloyd", :referred_by => "harry" })
+  	Keen.delete(:signups)
   end
 end
