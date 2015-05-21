@@ -38,6 +38,7 @@
   </div>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <script>
+var h = window.innerHeight;
 var client = new Keen({
   projectId: "555d535790e4bd2318a0f147",
   readKey: "847d02faef6e9efe40b8d75209d00a73bc8e4519beafbcb261f1abd8d68fb09738b32384c6eded71749fd8560930941439c335ab2de98172b896333514b06cd10aeb75e62d42ef49c3dda3ff227c87bd6f51f83e366897ea480ed4ede5d84e7974b17f7c9f5cc0dc9010798efb204d66"
@@ -57,7 +58,7 @@ Keen.ready(function(){
   client.draw(pageviews_timeline, document.getElementById("chart-01"), {
     chartType: "areachart",
     title: false,
-    height: 350,
+    height: h*.6,
     width: "auto",
     chartOptions: {
       chartArea: {
@@ -76,7 +77,7 @@ Keen.ready(function(){
 
   // ----------------------------------------
   // Sample two
-  // ----------------------------------------
+  /*
   var pageviews_static = new Keen.Query("average", {
     eventCollection: "BrodyBark",
     interval: "<%=@bark_display_interval%>",
@@ -101,7 +102,8 @@ Keen.ready(function(){
   // ----------------------------------------
   // End sample two
   // ----------------------------------------
-
+  
+ 
   // ----------------------------------------
   // Sample three
   // ----------------------------------------
@@ -135,7 +137,7 @@ Keen.ready(function(){
   // ----------------------------------------
   // End sample three
   // ----------------------------------------
-
+  */
 });
 </script>
 </body>
