@@ -21,15 +21,7 @@
         <a class="navbar-brand" href="../">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
-        <a class="navbar-brand" href="./">Dashboard Starter UI</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="https://keen.io">Home</a></li>
-          <li><a href="https://keen.io/team">Team</a></li>
-          <li><a href="https://github.com/keenlabs/dashboards/tree/gh-pages/examples/starter-kit">Source</a></li>
-          <li><a href="https://groups.google.com/forum/#!forum/keen-io-devs">Community</a></li><li><a href="http://stackoverflow.com/questions/tagged/keen-io?sort=newest&pageSize=15">Technical Support</a></li>
-        </ul>
+        <a class="navbar-brand" href="./">DogCaller</a>
       </div>
     </div>
   </div>
@@ -56,19 +48,16 @@ Keen.ready(function(){
   // ----------------------------------------
   // Sample one
   // ----------------------------------------
-  var pageviews_timeline = new Keen.Query("count", {
-    eventCollection: "pageviews",
-    interval: "hourly",
-    groupBy: "user.device_info.browser.family",
-    timeframe: {
-      start: "2014-05-04T00:00:00.000Z",
-      end: "2014-05-05T00:00:00.000Z"
-    }
+  var pageviews_timeline = new Keen.Query("sum", {
+    eventCollection: "BrodyBark",
+    interval: "minutely",
+    target_property: "bark",
+    timeframe: "today"
   });
   client.draw(pageviews_timeline, document.getElementById("chart-01"), {
     chartType: "areachart",
     title: false,
-    height: 250,
+    height: 350,
     width: "auto",
     chartOptions: {
       chartArea: {
@@ -99,7 +88,7 @@ Keen.ready(function(){
   client.draw(pageviews_static, document.getElementById("chart-02"), {
     chartType: "piechart",
     title: false,
-    height: 250,
+    height: 350,
     width: "auto",
     chartOptions: {
       chartArea: {
@@ -147,74 +136,6 @@ Keen.ready(function(){
   });
   // ----------------------------------------
   // End sample three
-  // ----------------------------------------
-
-  // ----------------------------------------
-  // Sample four
-  // ----------------------------------------
-  var impressions_timeline_by_device = new Keen.Query("count", {
-    eventCollection: "impressions",
-    groupBy: "user.device_info.device.family",
-    interval: "hourly",
-    timeframe: {
-      start: "2014-05-04T00:00:00.000Z",
-      end: "2014-05-05T00:00:00.000Z"
-    }
-  });
-  client.draw(impressions_timeline_by_device, document.getElementById("chart-04"), {
-    chartType: "columnchart",
-    title: false,
-    height: 250,
-    width: "auto",
-    chartOptions: {
-      chartArea: {
-        height: "75%",
-        left: "10%",
-        top: "5%",
-        width: "60%"
-      },
-      bar: {
-        groupWidth: "85%"
-      },
-      isStacked: true
-    }
-  });
-  // ----------------------------------------
-  // End sample four
-  // ----------------------------------------
-
-  // ----------------------------------------
-  // Sample five
-  // ----------------------------------------
-  var impressions_timeline_by_country = new Keen.Query("count", {
-    eventCollection: "impressions",
-    groupBy: "user.geo_info.country",
-    interval: "hourly",
-    timeframe: {
-      start: "2014-05-04T00:00:00.000Z",
-      end: "2014-05-05T00:00:00.000Z"
-    }
-  });
-  client.draw(impressions_timeline_by_country, document.getElementById("chart-05"), {
-    chartType: "columnchart",
-    title: false,
-    height: 250,
-    width: "auto",
-    chartOptions: {
-      chartArea: {
-        height: "75%",
-        left: "10%",
-        top: "5%",
-        width: "60%"
-      },
-      bar: {
-        groupWidth: "85%"
-      },
-      isStacked: true
-    }
-  });
-  // ----------------------------------------
-  // End sample five
   // ----------------------------------------
 
 });
