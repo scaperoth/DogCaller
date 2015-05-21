@@ -3,7 +3,7 @@
 <head>
 <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Raleway' />
   <title>DogCaller</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   
   <%= csrf_meta_tags %>
 </head>
@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <script>
 var client = new Keen({
   projectId: "555d535790e4bd2318a0f147",
