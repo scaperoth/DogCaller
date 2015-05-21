@@ -48,7 +48,7 @@ Keen.ready(function(){
   // ----------------------------------------
   // Sample one
   // ----------------------------------------
-  var pageviews_timeline = new Keen.Query("sum", {
+  var pageviews_timeline = new Keen.Query("count", {
     eventCollection: "BrodyBark",
     interval: "<%=@bark_display_interval%>",
     target_property: "bark",
