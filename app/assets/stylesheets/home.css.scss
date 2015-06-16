@@ -1,3 +1,12 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// import bootstrap-sprockets before bootstrap if using bootstrap >= 3.2
+// 
+.chart-wrapper .chart-stage {
+  min-height: 200px;
+}
+
+.keen-loading{
+	min-height:200px;
+}

@@ -1,59 +1,82 @@
 <div class="container-fluid">
-
-  <div class="row">
-
-    <div class="col-sm-12">
-
-      <div class="chart-wrapper">
-
-        <div class="chart-title">
-          Bark noise - <%=@bark_display_interval%>
-        </div>
-        <div class="chart-stage">
-          <div id="chart-01"></div>
-        </div>
-        <div class="chart-notes">
-          Results from recording noise today.
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="btn-group" role="group" aria-label="...">
-              <% @interval_options.each do |i| %>
-
-              <%  active_class = @bark_display_interval == i ? "active" : "" %>
-
-              <%= link_to i, bark_interval_path(i), {:class=> "#{active_class} btn btn-default", :role=>"button"} %>
-
-              <%end%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--
     <div class="row">
-
-      <div class="col-sm-12">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            Other important statistics
-          </div>
-          <div class="chart-stage">
-            <div id="chart-03"></div>
-          </div>
-          <div class="chart-notes">
-
-          </div>
+        <div class="col-sm-12">
+            <div class="chart-wrapper">
+                <div class="chart-title">
+                    Bark noise - <%=@bark_display_interval%>
+                </div>
+                <div class="chart-stage">
+                    <div id="chart-01"></div>
+                </div>
+                <div class="chart-notes">
+                    Results from recording noise today.
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <% @interval_options.each do |i| %>
+                            <%  active_class = @bark_display_interval == i ? "active" : "" %>
+                            <%= link_to i, bark_interval_path(i), {:class=> "#{active_class} btn btn-default", :role=>"button"} %>
+                            <%end%>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class='col-md-5'>
+                            <div class="form-group">
+                                <div class='input-group date' id='start_time'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-5'>
+                            <div class="form-group">
+                                <div class='input-group date' id='end_time'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-  
-
+        <script type="text/javascript">
+        $(function () {
+            $('#start_time').datetimepicker();
+            $('#end_time').datetimepicker();
+            $("#start_time").on("dp.change", function (e) {
+                $('#end_time').data("DateTimePicker").minDate(e.date);
+                if(typeof chart !== 'undefined')
+                    restart_chart()
+            });
+            $("#end_time").on("dp.change", function (e) {
+                $('#start_time').data("DateTimePicker").maxDate(e.date);
+                if(typeof chart !== 'undefined')
+                    restart_chart()
+            });
+        });
+        </script>
+        <!--
+                                    <div class="row">
+                                                    <div class="col-sm-12">
+                                                                        <div class="chart-wrapper">
+                                                                                        <div class="chart-title">
+                                                                                                            Other important statistics
+                                                                                        </div>
+                                                                                        <div class="chart-stage">
+                                                                                                            <div id="chart-03"></div>
+                                                                                        </div>
+                                                                                        <div class="chart-notes">
+                                                                                        </div>
+                                                                        </div>
+                                                    </div>
+                                    </div>
+        -->
+        <hr>
+        <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
     </div>
-  -->
-
-    <hr>
-
-    <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
-
-  </div>

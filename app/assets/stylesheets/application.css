@@ -11,6 +11,10 @@
  *= require lib/bootstrap/dist/css/bootstrap.min
  *= require css/keen-static
  *= require css/keen-dashboards
+ *= require bootstrap-datetimepicker
  *= require_self
  *= require_tree .
  */
+
+#chart-wrapper{
+}

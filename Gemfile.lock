@@ -30,6 +30,8 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.8)
     arel (3.0.3)
+    bootstrap3-datetimepicker-rails (4.7.14)
+      momentjs-rails (>= 2.8.1)
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -54,8 +56,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    momentjs-rails (2.10.3)
+      railties (>= 3.1)
     multi_json (1.11.1)
     pg (0.18.2)
+    pg (0.18.2-x86-mingw32)
     polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
@@ -104,11 +109,14 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
+  bootstrap3-datetimepicker-rails (~> 4.7.14)
   coffee-rails (~> 3.2.1)
   jquery-rails
   keen
+  momentjs-rails (>= 2.8.1)
   pg
   rails (<= 4.2.1)
   sass-rails (~> 3.2.3)

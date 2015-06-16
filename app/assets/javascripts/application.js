@@ -15,5 +15,7 @@
 //= require lib/bootstrap/dist/js/bootstrap.min
 //= require lib/keen-js/dist/keen.min
 //= require js/meta
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 

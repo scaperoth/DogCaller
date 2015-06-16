@@ -1,144 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Raleway' />
-  <title>DogCaller</title>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-  
-  <%= csrf_meta_tags %>
-</head>
-<body class="application">
+    <head>
+        <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Raleway' />
+        <title>DogCaller</title>
+        <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="../">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="navbar-brand" href="./">DogCaller</a>
-      </div>
-    </div>
-  </div>
-
-<%= yield %>
-
-<div class="footer">
-    <div class="container">
-      <div class="love">
-        <p>Made with &#9825; in San Francisco</p>
-        <p>&copy; 2012&ndash;2014 <a href="https://keen.io">Keen IO</a></p>
-      </div>
-    </div>
-  </div>
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<script>
-var h = window.innerHeight;
-var client = new Keen({
-  projectId: "555d535790e4bd2318a0f147",
-  readKey: "847d02faef6e9efe40b8d75209d00a73bc8e4519beafbcb261f1abd8d68fb09738b32384c6eded71749fd8560930941439c335ab2de98172b896333514b06cd10aeb75e62d42ef49c3dda3ff227c87bd6f51f83e366897ea480ed4ede5d84e7974b17f7c9f5cc0dc9010798efb204d66"
-});
-
-Keen.ready(function(){
-
-  // ----------------------------------------
-  // Sample one
-  // ----------------------------------------
-  var pageviews_timeline = new Keen.Query("count", {
-    eventCollection: "BrodyBark",
-    interval: "<%=@bark_display_interval%>",
-    target_property: "bark",
-    timeframe: "<%=@timeframe%>"
-  });
-  client.draw(pageviews_timeline, document.getElementById("chart-01"), {
-    chartType: "areachart",
-    title: false,
-    height: h*.6,
-    width: "auto",
-    chartOptions: {
-      chartArea: {
-        height: "85%",
-        left: "5%",
-        top: "5%",
-        width: "80%"
-      },
-      isStacked: true
-    }
-  });
-  // ----------------------------------------
-  //  End sample one
-  // ----------------------------------------
+        <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+        <%= csrf_meta_tags %>
+        <script>
+        var h = window.innerHeight;
+        var client = new Keen({
+          projectId: "555d535790e4bd2318a0f147",
+          readKey: "847d02faef6e9efe40b8d75209d00a73bc8e4519beafbcb261f1abd8d68fb09738b32384c6eded71749fd8560930941439c335ab2de98172b896333514b06cd10aeb75e62d42ef49c3dda3ff227c87bd6f51f83e366897ea480ed4ede5d84e7974b17f7c9f5cc0dc9010798efb204d66"
+        });
 
 
-  // ----------------------------------------
-  // Sample two
-  /*
-  var pageviews_static = new Keen.Query("average", {
-    eventCollection: "BrodyBark",
-    interval: "<%=@bark_display_interval%>",
-    target_property: "bark",
-    timeframe: "<%=@timeframe%>"
-  });
-  client.draw(pageviews_static, document.getElementById("chart-02"), {
-    chartType: "piechart",
-    title: false,
-    height: 350,
-    width: "auto",
-    chartOptions: {
-      chartArea: {
-        height: "85%",
-        left: "5%",
-        top: "5%",
-        width: "100%"
-      },
-      pieHole: .4
-    }
-  });
-  // ----------------------------------------
-  // End sample two
-  // ----------------------------------------
-  
- 
-  // ----------------------------------------
-  // Sample three
-  // ----------------------------------------
-  var impressions_timeline = new Keen.Query("count", {
-    eventCollection: "impressions",
-    groupBy: "ad.advertiser",
-    interval: "hourly",
-    timeframe: {
-      start: "2014-05-04T00:00:00.000Z",
-      end: "2014-05-05T00:00:00.000Z"
-    }
-  });
-  client.draw(impressions_timeline, document.getElementById("chart-03"), {
-    chartType: "columnchart",
-    title: false,
-    height: 250,
-    width: "auto",
-    chartOptions: {
-      chartArea: {
-        height: "75%",
-        left: "10%",
-        top: "5%",
-        width: "60%"
-      },
-      bar: {
-        groupWidth: "85%"
-      },
-      isStacked: true
-    }
-  });
-  // ----------------------------------------
-  // End sample three
-  // ----------------------------------------
-  */
-});
-</script>
-</body>
+        </script>
+    </head>
+    <body class="application">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="navbar-brand" href="./">DogCaller</a>
+                </div>
+            </div>
+        </div>
+        <%= yield %>
+        <div class="footer">
+            <div class="container">
+                <div class="love">
+                    <p>Made with &#9825; in San Francisco</p>
+                    <p>&copy; 2012&ndash;2014 <a href="https://keen.io">Keen IO</a></p>
+                </div>
+            </div>
+        </div>
+        <script>
+
+        var chart = new Keen.Dataviz();
+        var req;
+        var pageviews_timeline
+
+        function restart_chart(){
+          chart.prepare(); // restart the spinner
+          req.refresh();
+        }
+
+        Keen.ready(function(){
+          
+          // ----------------------------------------
+          // Sample one
+          // ----------------------------------------
+          pageviews_timeline = new Keen.Query("count", {
+              eventCollection: "BrodyBark",
+              interval: "<%=@bark_display_interval%>",
+              target_property: "bark",
+              timeframe: "<%=@timeframe%>"
+          });
+
+          var chart_name =  document.getElementById("chart-01")
+
+           chart 
+            .el(chart_name)
+            .prepare(); // starts spinner
+
+          req = client.run(pageviews_timeline, function(err, res){
+            if (err) {
+              // Display the API error
+              chart.error(err.message);
+            }
+            else {
+              var js_timeframe = {
+                "start": $('#start_time input').val(),
+                "end": $('#end_time input').val()
+              }
+              console.log(js_timeframe.end);
+
+              // Handle the response
+              chart
+                .parseRequest(this)
+                .attributes({
+                  chartType: "areachart",
+                  title: "Bark Measurement",
+                  height: h*.6,
+                  width: "auto",
+                  chartOptions: {
+                  chartArea: {
+                      height: "85%",
+                      left: "5%",
+                      top: "5%",
+                      width: "80%"
+                  },
+                  isStacked: true
+                }})
+                .render();
+            }
+          });
+          
+          // ----------------------------------------
+          //  End Chart one
+          // ----------------------------------------
+        });
+        </script>
+    </body>
 </html>
