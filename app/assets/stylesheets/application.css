@@ -8,13 +8,36 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require lib/bootstrap/dist/css/bootstrap.min
  *= require css/keen-static
  *= require css/keen-dashboards
+ *= require lib/bootstrap/dist/css/bootstrap.min
  *= require bootstrap-datetimepicker
  *= require_self
  *= require_tree .
  */
 
-#chart-wrapper{
+.row-grid{
+	margin-top:10px;
+	margin-bottom:20px;
 }
+
+.no-padding			{padding:0;}
+.no-top-padding		{padding-top:0;}
+.no-right-padding	{padding-right:0;}
+.no-bottom-padding	{padding-bottom:0;}
+.no-left-padding	{padding-left:0;}
+
+.top5 				{ margin-top:5px; }
+.top7 				{ margin-top:7px; }
+.top10 				{ margin-top:10px; }
+.top15 				{ margin-top:15px; }
+.top17 				{ margin-top:17px; }
+.top30 				{ margin-top:30px; }
+
+
+.bottom5 				{ margin-bottom:5px; }
+.bottom7 				{ margin-bottom:7px; }
+.bottom10 				{ margin-bottom:10px; }
+.bottom15 				{ margin-bottom:15px; }
+.bottom17 				{ margin-bottom:17px; }
+.bottom30 				{ margin-bottom:30px; }

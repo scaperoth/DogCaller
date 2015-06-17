@@ -11,30 +11,39 @@
                 <div class="chart-notes">
                     Results from recording noise today.
                 </div>
+                <%= form_tag url_for(:controller => "home"), {:id=>"time_form"} do |f| %>
                 <div class="row">
-                    <div class="col-sm-4">
-                        <div class="btn-group" role="group" aria-label="...">
-                            <% @interval_options.each do |i| %>
-                            <%  active_class = @bark_display_interval == i ? "active" : "" %>
-                            <%= link_to i, bark_interval_path(i), {:class=> "#{active_class} btn btn-default", :role=>"button"} %>
-                            <%end%>
+                    <div class="col-sm-12">
+                        <div class="col-sm-12">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <% form_val = nil %>
+                                <% @interval_options.each do |i| %>
+                                <%  active_class = @bark_display_interval == i ? "active" : "" %>
+                                <%  active_name = active_class != ""? i : "" %>
+                                <%= link_to i, '#', {:class=> "#{active_class} btn btn-default interval", :role=>"button", :name=>active_name} %>
+                                <% form_val ||= active_name if(active_class != "") %>
+                                <%end%>
+                                <%= hidden_field_tag(:bark_interval, form_val) %>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class='col-md-5'>
+                </div>
+                <div class="row  top15">
+                    <div class="col-sm-12">
+                        <div class='col-sm-2'>
                             <div class="form-group">
-                                <div class='input-group date' id='start_time'>
-                                    <input type='text' class="form-control" />
+                                <div class='input-group date' id="start_datetime">
+                                    <%= text_field_tag :start_time, @start_time.blank? ? nil : @start_time ,{:class=>'form-control'} %>
                                     <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class='col-md-5'>
+                        <div class='col-sm-2'>
                             <div class="form-group">
-                                <div class='input-group date' id='end_time'>
-                                    <input type='text' class="form-control" />
+                                <div class='input-group date' id="end_datetime" >
+                                    <%= text_field_tag :end_time, @end_time.blank? ? nil : @end_time ,{:class=>'form-control'} %>
                                     <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -43,40 +52,38 @@
                         </div>
                     </div>
                 </div>
+                <div class="row bottom15">
+                    <div class='col-sm-12'>
+                        <div class='col-sm-12'>
+                            <%= button_tag :Update, { :type=>"submit", :class=>"btn btn-primary pull-left"} %>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <% end %>
         </div>
-        <script type="text/javascript">
-        $(function () {
-            $('#start_time').datetimepicker();
-            $('#end_time').datetimepicker();
-            $("#start_time").on("dp.change", function (e) {
-                $('#end_time').data("DateTimePicker").minDate(e.date);
-                if(typeof chart !== 'undefined')
-                    restart_chart()
-            });
-            $("#end_time").on("dp.change", function (e) {
-                $('#start_time').data("DateTimePicker").maxDate(e.date);
-                if(typeof chart !== 'undefined')
-                    restart_chart()
-            });
-        });
-        </script>
-        <!--
-                                    <div class="row">
-                                                    <div class="col-sm-12">
-                                                                        <div class="chart-wrapper">
-                                                                                        <div class="chart-title">
-                                                                                                            Other important statistics
-                                                                                        </div>
-                                                                                        <div class="chart-stage">
-                                                                                                            <div id="chart-03"></div>
-                                                                                        </div>
-                                                                                        <div class="chart-notes">
-                                                                                        </div>
-                                                                        </div>
-                                                    </div>
-                                    </div>
-        -->
-        <hr>
-        <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#start_datetime').datetimepicker({
+                format: 'YYYY-MM-DD hh:mm:ss',
+            });
+            $('#end_datetime').datetimepicker({
+                format: 'YYYY-MM-DD hh:mm:ss',
+            });
+            $("#start_datetime").on("dp.change", function (e) {
+                $('#end_datetime').data("DateTimePicker").minDate(e.date);
+            });
+            $("#end_datetime").on("dp.change", function (e) {
+                $('#start_datetime').data("DateTimePicker").maxDate(e.date);
+            });
+            $(".interval").on("click",function(e){
+                $(".interval").removeClass("active");
+                $(this).addClass("active");
+                $("#bark_interval").attr("value", $(this).text());
+            })
+        });
+    </script>
+    <hr>
+    <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
+</div>

@@ -3,6 +3,8 @@ DogCaller::Application.routes.draw do
   get "home/index"
 
   root :to => 'home#index'
+
+  post 'home/index' => 'home#index'
   get 'interval/:bark_interval' => 'home#index', as: :bark_interval
 
   # The priority is based upon order of creation:

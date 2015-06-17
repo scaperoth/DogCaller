@@ -43,6 +43,7 @@
                 </div>
             </div>
         </div>
+        <%= debug(params) if Rails.env.development? %>
         <script>
 
         var chart = new Keen.Dataviz();
@@ -63,47 +64,25 @@
               eventCollection: "BrodyBark",
               interval: "<%=@bark_display_interval%>",
               target_property: "bark",
-              timeframe: "<%=@timeframe%>"
+              timeframe: <%=@timeframe.html_safe %>
           });
 
           var chart_name =  document.getElementById("chart-01")
 
-           chart 
-            .el(chart_name)
-            .prepare(); // starts spinner
+          client.draw(pageviews_timeline, chart_name, {
+              chartType: "areachart",
+              height: h*.6,
+              width: "auto",
+              chartOptions: {
+              chartArea: {
+                  height: "85%",
+                  left: "5%",
+                  top: "5%",
+                  width: "80%"
+              },
+              isStacked: true
+          }});
 
-          req = client.run(pageviews_timeline, function(err, res){
-            if (err) {
-              // Display the API error
-              chart.error(err.message);
-            }
-            else {
-              var js_timeframe = {
-                "start": $('#start_time input').val(),
-                "end": $('#end_time input').val()
-              }
-              console.log(js_timeframe.end);
-
-              // Handle the response
-              chart
-                .parseRequest(this)
-                .attributes({
-                  chartType: "areachart",
-                  title: "Bark Measurement",
-                  height: h*.6,
-                  width: "auto",
-                  chartOptions: {
-                  chartArea: {
-                      height: "85%",
-                      left: "5%",
-                      top: "5%",
-                      width: "80%"
-                  },
-                  isStacked: true
-                }})
-                .render();
-            }
-          });
           
           // ----------------------------------------
           //  End Chart one
