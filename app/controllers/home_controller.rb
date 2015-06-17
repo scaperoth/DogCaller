@@ -7,21 +7,27 @@ class HomeController < ApplicationController
 
     @start_time = ''
     @end_time = ''
-
+    @formatted_start_time = ''
+    @formatted_end_time = ''
 
     if params[:bark_interval].present?
-      raw_start = DateTime.parse(params[:start_time])
-      raw_end = DateTime.parse(params[:end_time])
-
-      @start_time = raw_start.strftime('%Y-%m-%dT%H:%M:%S.000TZ')
-      @end_time = raw_end.strftime('%Y-%m-%dT%H:%M:%S.000TZ')
-
+      @start_time = params[:start_time]
+      @end_time = params[:end_time]
       @bark_display_interval = params[:bark_interval]
     end
 
     @timeframe = get_timeframe(@bark_display_interval)
 
     if(!@start_time.blank? || !@end_time.blank? )
+      raw_start = DateTime.parse(@start_time)
+      raw_end = DateTime.parse(@end_time)
+
+      @start_time = raw_start.strftime('%Y-%m-%dT%H:%M:%S.000TZ')
+      @end_time = raw_end.strftime('%Y-%m-%dT%H:%M:%S.000TZ')
+
+      @formatted_start_time = raw_start.strftime('%a, %b %d, %Y %l:%M%p')
+      @formatted_end_time = raw_end.strftime('%a, %b %d, %Y %l:%M%p')
+
       @timeframe = "{
 				\"start\" : \"#{@start_time}\",
 				\"end\" : \"#{@end_time}\",

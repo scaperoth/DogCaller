@@ -68,9 +68,9 @@
           });
 
           var chart_name =  document.getElementById("chart-01")
-
           client.draw(pageviews_timeline, chart_name, {
               chartType: "areachart",
+              title: <%= @start_time.blank? ? "\"#{@bark_display_interval}\"".html_safe : "\"#{@bark_display_interval} | #{@formatted_start_time} -- #{@formatted_end_time}\"".html_safe %>,
               height: h*.6,
               width: "auto",
               chartOptions: {
@@ -80,7 +80,7 @@
                   top: "5%",
                   width: "80%"
               },
-              isStacked: true
+              isStacked: false
           }});
 
           

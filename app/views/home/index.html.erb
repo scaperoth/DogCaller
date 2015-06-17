@@ -3,15 +3,15 @@
         <div class="col-sm-12">
             <div class="chart-wrapper">
                 <div class="chart-title">
-                    Bark noise - <%=@bark_display_interval%>
+                    Bark noise
                 </div>
                 <div class="chart-stage">
                     <div id="chart-01"></div>
                 </div>
                 <div class="chart-notes">
-                    Results from recording noise today.
+                    Results from recording barks.
                 </div>
-                <%= form_tag url_for(:controller => "home"), {:id=>"time_form"} do |f| %>
+                <%= form_tag url_for(:controller => "home"), {:id=>"time_form", :class=>"form-inline"} do |f| %>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="col-sm-12">
@@ -30,20 +30,22 @@
                 </div>
                 <div class="row  top15">
                     <div class="col-sm-12">
-                        <div class='col-sm-2'>
+                        <div class='col-sm-3'>
                             <div class="form-group">
+                            <label for="start_time">Start Date/Time:</label>
                                 <div class='input-group date' id="start_datetime">
-                                    <%= text_field_tag :start_time, @start_time.blank? ? nil : @start_time ,{:class=>'form-control'} %>
+                                    <%= text_field_tag :start_time, @formatted_start_time.blank? ? nil : @formatted_start_time ,{:class=>'form-control'} %>
                                     <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class='col-sm-2'>
+                        <div class='col-sm-3'>
                             <div class="form-group">
+                            <label for="end_time">End Date/Time:</label>
                                 <div class='input-group date' id="end_datetime" >
-                                    <%= text_field_tag :end_time, @end_time.blank? ? nil : @end_time ,{:class=>'form-control'} %>
+                                    <%= text_field_tag :end_time, @formatted_end_time.blank? ? nil : @formatted_end_time ,{:class=>'form-control'} %>
                                     <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -52,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row bottom15">
+                <div class="row bottom15 top15">
                     <div class='col-sm-12'>
                         <div class='col-sm-12'>
                             <%= button_tag :Update, { :type=>"submit", :class=>"btn btn-primary pull-left"} %>
@@ -66,10 +68,10 @@
     <script type="text/javascript">
         $(function () {
             $('#start_datetime').datetimepicker({
-                format: 'YYYY-MM-DD hh:mm:ss',
+                format: 'ddd, MMM DD, YYYY h:mmA',
             });
             $('#end_datetime').datetimepicker({
-                format: 'YYYY-MM-DD hh:mm:ss',
+                format: 'ddd, MMM DD, YYYY h:mmA',
             });
             $("#start_datetime").on("dp.change", function (e) {
                 $('#end_datetime').data("DateTimePicker").minDate(e.date);
@@ -85,5 +87,5 @@
         });
     </script>
     <hr>
-    <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
+    <p class="small text-muted">Built by <a href="https://scaperoth.com">Matt Scaperoth</a></p>
 </div>
