@@ -12,6 +12,7 @@
  *= require css/keen-dashboards
  *= require lib/bootstrap/dist/css/bootstrap.min
  *= require bootstrap-datetimepicker
+ *= require font-awesome
  *= require_self
  *= require_tree .
  */

@@ -25,6 +25,8 @@ gem 'jquery-rails'
 
 gem 'keen'
 
+gem "font-awesome-rails"
+
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 

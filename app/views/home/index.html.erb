@@ -36,7 +36,7 @@
                                 <div class='input-group date' id="start_datetime">
                                     <%= text_field_tag :start_time, @formatted_start_time.blank? ? nil : @formatted_start_time ,{:class=>'form-control'} %>
                                     <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    <%= fa_icon "calendar" %>
                                     </span>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                 <div class='input-group date' id="end_datetime" >
                                     <%= text_field_tag :end_time, @formatted_end_time.blank? ? nil : @formatted_end_time ,{:class=>'form-control'} %>
                                     <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    <%= fa_icon "calendar" %>
                                     </span>
                                 </div>
                             </div>
@@ -69,9 +69,29 @@
         $(function () {
             $('#start_datetime').datetimepicker({
                 format: 'ddd, MMM DD, YYYY h:mmA',
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-circle-left',
+                    next: 'fa fa-chevron-circle-right',
+                    today: 'fa fa-bullseye',
+                    clear: 'fa fa-trash',
+                }
             });
             $('#end_datetime').datetimepicker({
                 format: 'ddd, MMM DD, YYYY h:mmA',
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-circle-left',
+                    next: 'fa fa-chevron-circle-right',
+                    today: 'fa fa-bullseye',
+                    clear: 'fa fa-trash',
+                }
             });
             $("#start_datetime").on("dp.change", function (e) {
                 $('#end_datetime').data("DateTimePicker").minDate(e.date);
